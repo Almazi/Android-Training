@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    app:layout_constraintTop_toBottomOf="@+id/output"
+    tools:context="almazi.calculator.first_row">
+
+    <Button
+        android:id="@+id/saveMemory"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        android:text="M+" />
+
+    <Button
+        android:id="@+id/readMemory"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toRightOf="@id/saveMemory"
+        android:text="M" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toRightOf="@id/readMemory"
+        android:text="R" />
+
+    <Button
+        android:id="@+id/multiply"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toRightOf="@id/refresh"
+        android:text="X" />
+
+</android.support.constraint.ConstraintLayout>
