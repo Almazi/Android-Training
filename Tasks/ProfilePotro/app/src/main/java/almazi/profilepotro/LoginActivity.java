@@ -29,7 +29,11 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox rememberMeCheck;
 
     private MyPreference myPreference;
-    public String userGuid;
+
+
+    String email;
+    String password;
+    String userGuid;
 
 
     @Override
@@ -38,12 +42,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
+        myPreference = MyPreference.getPreferences(this);
+        if(!myPreference.getUserGuid().isEmpty()) {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+        }
     }
+
+
 
     @OnClick(R.id.loginButton)
     void logInButtonClick(){
-        String email = emailLogin.getText().toString();
-        String password = passwordLogin.getText().toString();
+
+        myPreference = MyPreference.getPreferences(this);
+        email = emailLogin.getText().toString();
+        password = passwordLogin.getText().toString();
+
         User user = new User(email, password);
 
         ApiInterface apiInterface = RetrofitApiClient.getClient().create(ApiInterface.class);
@@ -53,37 +67,44 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 Logger.d("Raw Response: " + response.raw());
 
-                if(response.code()==200){
+                if (response.code() == 200) {
 
                     ResponseModel responseModel = response.body();
                     Toast.makeText(getApplicationContext(), responseModel.getMessage(), Toast.LENGTH_LONG).show();
                     userGuid = responseModel.getUserGuid();
-                    if(responseModel.isSuccess()) { // user name and password is correct
+                    initialization();
+
+                    if (responseModel.isSuccess()) { // user name and password is correct
+                        Logger.d(myPreference.getEmail() + " " + myPreference.getPassword() + " " + myPreference.getUserGuid());
+
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("userGuid",userGuid);
                         startActivity(intent);
+                        finish(); // finish LoginActivity
                     }
 
                 } else
                     Toast.makeText(getApplicationContext(), "Error: " + response.message(), Toast.LENGTH_LONG).show();
 
             }
-
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 Logger.d("Failed: " + t.getMessage());
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        if(rememberMeCheck.isChecked()) initialization(email, password, userGuid);
+
 
     }
-
-    private void initialization(String email, String password, String userGuid) {
-        myPreference = MyPreference.getPreferences(this);
+    private void initialization() {
         myPreference.setEmail(email);
         myPreference.setPassword(password);
         myPreference.setUserGuid(userGuid);
 
+    }
+    @OnClick(R.id.regButton)
+    void regButtonClick(){
+        Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

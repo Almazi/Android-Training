@@ -34,10 +34,10 @@ public class User {
 
     }
 
-    public User(String name, String email, String string, String phone, String address) {
+    public User(String name, String email, String password, String phone, String address) {
         this.name = name;
         this.email = email;
-        this.password = string;
+        this.password = password;
         this.phone = phone;
         this.address = address;
     }
@@ -63,13 +63,14 @@ public class User {
         this.email = email;
     }
 
-    public String getString() {
+    public String getPassword() {
         return password;
     }
 
-    public void setString(String string) {
+    public void setPassword(String string) {
         this.password = string;
     }
+
 
     public String getPhone() {
         return phone;

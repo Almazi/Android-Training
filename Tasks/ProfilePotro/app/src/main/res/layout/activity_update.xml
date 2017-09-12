@@ -4,35 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="almazi.profilepotro.LoginActivity">
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    tools:context="almazi.profilepotro.UpdateActivity">
 
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/update_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
     <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:id="@+id/update_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
-            android:id="@+id/email_login_form"
+            android:id="@+id/email_update_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
             <TextView
-                android:id="@+id/loginTitle"
+                android:id="@+id/updateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Update"
                 android:textAlignment="center"
                 android:textSize="40sp"
                 android:fontFamily="monospace"
@@ -40,53 +41,50 @@
                 android:layout_marginTop="8dp" />
 
 
-
-
             <EditText
-                android:id="@+id/emailLogin"
+                android:id="@+id/updateName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
                 android:layout_marginTop="20dp"
-                android:hint="Enter your email"
-                android:inputType="textEmailAddress"
+                android:layout_marginRight="16dp"
                 android:textSize="20sp"/>
 
 
             <EditText
-                android:id="@+id/passwordLogin"
+                android:id="@+id/updatePhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="20dp"
-                android:hint="Enter your Password"
-                android:inputType="textPassword"
+                android:inputType="phone"
                 android:textSize="20sp"/>
 
-            <CheckBox
-                android:id="@+id/rememberMeCheck"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/updateAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Remember Me"
+                android:inputType="textMultiLine"
                 android:textSize="20sp"/>
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Login"/>
+                android:layout_marginTop="30dp"
+                android:text="Save"/>
+
 
             <Button
-                android:id="@+id/regButton"
+                android:id="@+id/loutButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Registration"/>
+                android:text="Logout"/>
 
         </LinearLayout>
     </ScrollView>

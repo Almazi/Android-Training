@@ -35,9 +35,6 @@ public class RegistrationActivity extends AppCompatActivity {
     @BindView(R.id.address)
     EditText addressActv;
 
-    @BindView(R.id.serverMessage)
-    TextView serverMessage;
-
 
 
     @Override
@@ -80,7 +77,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     }
 
                 } else {
-                    serverMessage.setText("Error: "+response.message());
                     ResponseModel responseModel = response.body();
                     Toast.makeText(getApplicationContext(), responseModel.getMessage(), Toast.LENGTH_LONG).show();
 
@@ -91,10 +87,15 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseModel> call, Throwable t) {
                 Logger.d("Failed:" + t.toString());
-                serverMessage.setText("Error: " + t.getMessage());
             }
         });
 
+    }
+
+    @OnClick(R.id.logButton)
+    void logButtonClicked(){
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
     }
 
 

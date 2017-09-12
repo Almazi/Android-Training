@@ -103,20 +103,22 @@
                     android:inputType="textMultiLine"
                     android:textSize="20sp"/>
 
-            <Button
-                android:id="@+id/registrationButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="30dp"
-                android:text="Submit"/>
+                <Button
+                    android:id="@+id/registrationButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Submit"/>
 
-            <TextView
-                android:id="@+id/serverMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="60sp"/>
+                <Button
+                    android:id="@+id/logButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Login"/>
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

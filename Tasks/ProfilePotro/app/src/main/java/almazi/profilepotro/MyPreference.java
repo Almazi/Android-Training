@@ -26,8 +26,6 @@ public class MyPreference {
     }
 
 
-
-
     public void setEmail(String email) {
         editor.putString(Email, email);
         editor.apply();
@@ -44,16 +42,15 @@ public class MyPreference {
         editor.commit();
     }
 
-    public String getEmail() {
+    public  String getEmail() { return sharedPreferences.getString(Email, ""); }
 
-        return sharedPreferences.getString(Email, "");
-    }
-
-    public static String getPassword() {
+    public  String getPassword() {
         return sharedPreferences.getString(Password, "");
     }
 
-    public static String getUserGuid() {
+    public  String getUserGuid() {
         return sharedPreferences.getString(UserGuid, "");
     }
+
+
 }
