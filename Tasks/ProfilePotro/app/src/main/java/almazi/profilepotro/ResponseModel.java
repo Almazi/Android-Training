@@ -16,6 +16,8 @@ public class ResponseModel {
     @SerializedName("userGuid")
     private String userGuid;
 
+    @SerializedName("profile")
+    public ProfileModel profileModel;
     public ResponseModel() {
     }
     public ResponseModel(boolean success, String message) {
@@ -23,10 +25,17 @@ public class ResponseModel {
         this.message = message;
     }
 
-    public ResponseModel(boolean success, String message, String userGuid) {
+    public ResponseModel(boolean success, String message, ProfileModel profileModel) {
+        this.success = success;
+        this.message = message;
+        this.profileModel = profileModel;
+    }
+
+    public ResponseModel(boolean success, String message, String userGuid, ProfileModel profileModel) {
         this.success = success;
         this.message = message;
         this.userGuid = userGuid;
+        this.profileModel = profileModel;
     }
 
     public boolean isSuccess() {
@@ -51,5 +60,13 @@ public class ResponseModel {
 
     public void setUserGuid(String userGuid) {
         this.userGuid = userGuid;
+    }
+
+    public ProfileModel getProfileModel() {
+        return profileModel;
+    }
+
+    public void setProfileModel(ProfileModel profileModel) {
+        this.profileModel = profileModel;
     }
 }

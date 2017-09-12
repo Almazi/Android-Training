@@ -20,7 +20,7 @@ public interface ApiInterface {
     Call<ResponseModel> loginToServer(@Body User user);
 
     @GET("user/{userGuid}")
-    Call<ProfileModel> fetchUserInfo(@Path("userGuid") String userGuid);
+    Call<ResponseModel> fetchUserInfo(@Path("userGuid") String userGuid);
 
 
 }

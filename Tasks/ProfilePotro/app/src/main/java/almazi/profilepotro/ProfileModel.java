@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProfileModel {
     @SerializedName("name")
-    private String name;
+    public String name;
     @SerializedName("email")
     private String email;
     @SerializedName("phone")
@@ -19,10 +19,27 @@ public class ProfileModel {
     public ProfileModel() {
     }
 
+
     public ProfileModel(String name, String email, String phone, String address) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.address = address;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
     }
 

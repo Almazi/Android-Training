@@ -28,6 +28,10 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.rememberMeCheck)
     CheckBox rememberMeCheck;
 
+    private MyPreference myPreference;
+    public String userGuid;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     void logInButtonClick(){
         String email = emailLogin.getText().toString();
         String password = passwordLogin.getText().toString();
-
         User user = new User(email, password);
 
         ApiInterface apiInterface = RetrofitApiClient.getClient().create(ApiInterface.class);
@@ -54,12 +57,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     ResponseModel responseModel = response.body();
                     Toast.makeText(getApplicationContext(), responseModel.getMessage(), Toast.LENGTH_LONG).show();
-
+                    userGuid = responseModel.getUserGuid();
                     if(responseModel.isSuccess()) { // user name and password is correct
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("userGuid", responseModel.getUserGuid());
+                        intent.putExtra("userGuid",userGuid);
                         startActivity(intent);
-                        finish(); // finish LoginActivity
                     }
 
                 } else
@@ -73,5 +75,15 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+        if(rememberMeCheck.isChecked()) initialization(email, password, userGuid);
+
+    }
+
+    private void initialization(String email, String password, String userGuid) {
+        myPreference = MyPreference.getPreferences(this);
+        myPreference.setEmail(email);
+        myPreference.setPassword(password);
+        myPreference.setUserGuid(userGuid);
+
     }
 }

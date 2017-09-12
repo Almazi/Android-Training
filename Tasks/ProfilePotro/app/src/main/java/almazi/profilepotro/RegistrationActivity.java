@@ -3,7 +3,6 @@ package almazi.profilepotro;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,7 +46,9 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
+        //View and SharedPreference initialization
     }
+
 
     @OnClick(R.id.registrationButton)
     void submitRegistration(){
@@ -95,4 +96,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
