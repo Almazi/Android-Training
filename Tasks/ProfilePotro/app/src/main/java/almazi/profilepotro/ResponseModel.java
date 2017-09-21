@@ -37,6 +37,13 @@ public class ResponseModel {
         this.userGuid = userGuid;
         this.profileModel = profileModel;
     }
+    public ProfileModel getProfileModel() {
+        return profileModel;
+    }
+
+    public void setProfileModel(ProfileModel profileModel) {
+        this.profileModel = profileModel;
+    }
 
     public boolean isSuccess() {
         return success;
@@ -62,11 +69,5 @@ public class ResponseModel {
         this.userGuid = userGuid;
     }
 
-    public ProfileModel getProfileModel() {
-        return profileModel;
-    }
 
-    public void setProfileModel(ProfileModel profileModel) {
-        this.profileModel = profileModel;
-    }
 }

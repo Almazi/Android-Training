@@ -63,16 +63,16 @@ public class HomeActivity extends AppCompatActivity {
                 if(response.code() == 200){
                     Logger.d("response:" + response.message());
                     name = responseModel.getProfileModel().getName();
-                    nameProfile.setText("Name: "+name);
+                    nameProfile.setText("Name: " + name);
 
                     email = responseModel.getProfileModel().getEmail();
-                    emailProfile.setText("Email: "+ responseModel.getProfileModel().getEmail());
+                    emailProfile.setText("Email: " + email);
 
                     phone = responseModel.getProfileModel().getPhone();
-                    phoneProfile.setText("Phone: "+phone);
+                    phoneProfile.setText("Phone: " + phone);
 
                     address = responseModel.getProfileModel().getAddress();
-                    addressProfile.setText("Address: "+address);
+                    addressProfile.setText("Address: " + address);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Error: " + responseModel.getMessage(), Toast.LENGTH_LONG).show();

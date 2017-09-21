@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">test_Retrofit</string>
+    <string name="button_text">Show IP</string>
+</resources>

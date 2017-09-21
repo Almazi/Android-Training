@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GitEx</string>
+    <string name="title_activity_search">GitEx - Search</string>
+
+    <!-- Strings related to search -->
+    <string name="hint_search">Search a name</string>
+    <string name="button_search">Search</string>
+    <string name="rating_title">Rating: </string>
+    <string name="bio">Bio</string>
+    <string name="repos">Repo:</string>
+    <string name="follower">Followers:</string>
+    <string name="blog">Blog URL:</string>
+    <string name="email">Email ID:</string>
+    <string name="login_name">Username:</string>
+    <string name="full_name">Name:</string>
+    <string name="company_name">Works in:</string>
+
+</resources>
