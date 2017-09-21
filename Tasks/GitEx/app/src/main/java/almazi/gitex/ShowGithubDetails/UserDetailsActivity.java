@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UserDetailsActivity extends AppCompatActivity {
-
+/*
     @BindView(R.id.userImageView)
     ImageView userImageView;
     @BindView(R.id.userFullName)
@@ -47,10 +47,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         Items items = getIntent().getParcelableExtra(Config.ITEM);
 
-        /*
-        Print the movie object as JSON in log message.
-        Just for checking the data is valid or not
-         */
+
         Gson gson = new Gson();
         String movieJson = gson.toJson(items, Items.class);
         Logger.json(movieJson);
@@ -82,4 +79,5 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+*/
 }

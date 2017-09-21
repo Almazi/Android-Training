@@ -1,5 +1,6 @@
 package almazi.gitex.RecyclerView;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,6 +27,8 @@ public class SearchResultActivity extends AppCompatActivity {
     private MyPreference myPreference;
     @BindView(R.id.searchResult)
     RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +48,12 @@ public class SearchResultActivity extends AppCompatActivity {
 
         ApiInterface apiInterface = RetrofitApiClient.getClient().create(ApiInterface.class);
         Call<SearchResponseModel> call = apiInterface.getSearchResults(query);
+
         call.enqueue(new Callback<SearchResponseModel>() {
             @Override
-            public void onResponse(Call<SearchResponseModel> call, Response<SearchResponseModel> response) {
+
+            public void onResponse(@NonNull Call<SearchResponseModel> call, @NonNull Response<SearchResponseModel> response) {
+
                 Logger.d(query);
 
                 Logger.d("Raw http data: "+response.raw());
@@ -58,11 +64,10 @@ public class SearchResultActivity extends AppCompatActivity {
                     Logger.d(json);
 
                     if(searchResponseModel!=null) {
-                        Logger.d(searchResponseModel.getTotal_count());
-                        //recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), searchResponseModel.getItems());
-                        Logger.d(searchResponseModel.getItems().getLogin());
-                        //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-                        //recyclerView.setAdapter(recyclerViewAdapter);
+                        Logger.d(searchResponseModel.getItems());
+                        recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), searchResponseModel.getItems());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                        recyclerView.setAdapter(recyclerViewAdapter);
                     } else
                         Toast.makeText(getApplicationContext(), "User not found", Toast.LENGTH_LONG).show();
 

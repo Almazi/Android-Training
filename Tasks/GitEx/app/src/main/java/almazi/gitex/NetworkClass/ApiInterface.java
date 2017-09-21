@@ -13,6 +13,8 @@ public interface ApiInterface {
 
     @GET("search/users")
     Call<SearchResponseModel> getSearchResults(@Query("q") String query);
+
+
     //Observable<SearchResponseModel> getSearchResults(@Query("q") String query, @Query("page") int page, @Query("per_page") int perPage);
 
 

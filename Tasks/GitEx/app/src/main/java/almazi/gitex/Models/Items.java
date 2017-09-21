@@ -5,11 +5,14 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by almazi on 9/20/17.
  */
 
-public class Items {
+public class Items implements Parcelable{
+
     @SerializedName("login")
     private String login;
 
@@ -38,7 +41,34 @@ public class Items {
     private String repos_url;
 
     @SerializedName("userDetails")
-    private UserDetails userDetails;
+    private List<UserDetails> userDetails = null;
+
+    public final static Parcelable.Creator<Items> CREATOR = new Creator<Items>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public Items createFromParcel(Parcel in) {
+            Items instance = new Items();
+            instance.login = ((String) in.readValue((String.class.getClassLoader())));
+            instance.id = ((int) in.readValue((String.class.getClassLoader())));
+            instance.avatar_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.gravatar_id = ((String) in.readValue((Integer.class.getClassLoader())));
+            instance.url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.html_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.followers_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.following_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.repos_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.userDetails = (List<UserDetails>) in.readValue((String.class.getClassLoader()));
+            return instance;
+        }
+
+        public Items[] newArray(int size) {
+            return (new Items[size]);
+        }
+
+    };
 
     public String getLogin() {
         return login;
@@ -112,48 +142,18 @@ public class Items {
         this.repos_url = repos_url;
     }
 
-    public UserDetails getUserDetails() {
+    public List<UserDetails> getUserDetails() {
         return userDetails;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
+    public void setUserDetails(List<UserDetails> userDetails) {
         this.userDetails = userDetails;
     }
-/*
-    public static Creator<Items> getCREATOR() {
-        return CREATOR;
-    }
 
-    protected Items(Parcel in) {
-        login = in.readString();
-        id = in.readInt();
-        avatar_url = in.readString();
-        gravatar_id = in.readString();
-        url = in.readString();
-        html_url = in.readString();
-        followers_url = in.readString();
-        following_url = in.readString();
-        repos_url = in.readString();
-    }
-
-    public static final Creator<Items> CREATOR = new Creator<Items>() {
-        @Override
-        public Items createFromParcel(Parcel in) {
-            return new Items(in);
-        }
-
-        @Override
-        public Items[] newArray(int size) {
-            return new Items[size];
-        }
-    };
-
-    @Override
     public int describeContents() {
         return 0;
     }
 
-    @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(login);
         parcel.writeInt(id);
@@ -165,5 +165,5 @@ public class Items {
         parcel.writeString(following_url);
         parcel.writeString(repos_url);
     }
-*/
+
 }

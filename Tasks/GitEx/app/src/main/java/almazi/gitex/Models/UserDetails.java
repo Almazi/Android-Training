@@ -1,12 +1,15 @@
 package almazi.gitex.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by almazi on 9/20/17.
  */
 
-public class UserDetails {
+public class UserDetails implements Parcelable{
 
     @SerializedName("login")
     private String login;
@@ -53,41 +56,37 @@ public class UserDetails {
     @SerializedName("repos")
     private int repos;
 
-    public UserDetails() {
-    }
+    public final static Parcelable.Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
 
-    public UserDetails(String name, String email, String company, String bio,
-                       String blog, int followers, int following, int repos) {
-        this.name = name;
-        this.email = email;
-        this.company = company;
-        this.bio = bio;
-        this.blog = blog;
-        this.followers = followers;
-        this.following = following;
-        this.repos = repos;
-    }
 
-    public UserDetails(String login, int id, String name, String email, String company,
-                       String bio, String blog, String location, String avatar_url,
-                       String gravatar_id, String url, String html_url, int followers,
-                       int following, int repos) {
-        this.login = login;
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.company = company;
-        this.bio = bio;
-        this.blog = blog;
-        this.location = location;
-        this.avatar_url = avatar_url;
-        this.gravatar_id = gravatar_id;
-        this.url = url;
-        this.html_url = html_url;
-        this.followers = followers;
-        this.following = following;
-        this.repos = repos;
-    }
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public UserDetails createFromParcel(Parcel in) {
+            UserDetails instance = new UserDetails();
+            instance.login = ((String) in.readValue((String.class.getClassLoader())));
+            instance.name = ((String) in.readValue((String.class.getClassLoader())));
+            instance.location = ((String) in.readValue((String.class.getClassLoader())));
+            instance.id = ((int) in.readValue((String.class.getClassLoader())));
+            instance.avatar_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.gravatar_id = ((String) in.readValue((Integer.class.getClassLoader())));
+            instance.url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.html_url = ((String) in.readValue((String.class.getClassLoader())));
+            instance.email = ((String) in.readValue((String.class.getClassLoader())));
+            instance.bio = ((String) in.readValue((String.class.getClassLoader())));
+            instance.blog = ((String) in.readValue((String.class.getClassLoader())));
+            instance.company = ((String) in.readValue((String.class.getClassLoader())));
+            instance.followers = ((int) in.readValue((String.class.getClassLoader())));
+            instance.following = ((int) in.readValue((String.class.getClassLoader())));
+
+            return instance;
+        }
+
+        public UserDetails[] newArray(int size) {
+            return (new UserDetails[size]);
+        }
+
+    };
 
     public String getLogin() {
         return login;
@@ -207,5 +206,26 @@ public class UserDetails {
 
     public void setRepos(int repos) {
         this.repos = repos;
+    }
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(login);
+        dest.writeValue(id);
+        dest.writeValue(name);
+        dest.writeValue(email);
+        dest.writeValue(company);
+        dest.writeValue(bio);
+        dest.writeValue(blog);
+        dest.writeValue(location);
+        dest.writeValue(avatar_url);
+        dest.writeValue(gravatar_id);
+        dest.writeValue(url);
+        dest.writeValue(html_url);
+        dest.writeValue(followers);
+        dest.writeValue(following);
+        dest.writeValue(repos);
+    }
+
+    public int describeContents() {
+        return 0;
     }
 }
