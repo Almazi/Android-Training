@@ -1,21 +1,6 @@
 package almazi.gitex.ShowGithubDetails;
 
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-import com.squareup.picasso.Picasso;
-
-import almazi.gitex.Models.Items;
-import almazi.gitex.R;
-import almazi.gitex.Utilities.Config;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class UserDetailsActivity extends AppCompatActivity {
 /*
