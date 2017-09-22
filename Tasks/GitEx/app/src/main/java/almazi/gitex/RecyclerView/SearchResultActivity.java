@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import java.lang.reflect.Array;
+
 import almazi.gitex.Models.SearchResponseModel;
 import almazi.gitex.NetworkClass.ApiInterface;
 import almazi.gitex.NetworkClass.RetrofitApiClient;
@@ -26,7 +28,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private String query;
     private MyPreference myPreference;
     @BindView(R.id.searchResult)
-    RecyclerView recyclerView;
+    RecyclerView searchResult;
     private RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
@@ -66,8 +68,8 @@ public class SearchResultActivity extends AppCompatActivity {
                     if(searchResponseModel!=null) {
                         Logger.d(searchResponseModel.getItems());
                         recyclerViewAdapter = new RecyclerViewAdapter(getApplicationContext(), searchResponseModel.getItems());
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-                        recyclerView.setAdapter(recyclerViewAdapter);
+                        searchResult.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                        searchResult.setAdapter(recyclerViewAdapter);
                     } else
                         Toast.makeText(getApplicationContext(), "User not found", Toast.LENGTH_LONG).show();
 
@@ -83,4 +85,5 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         });
     }
+
 }

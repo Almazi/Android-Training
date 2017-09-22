@@ -2,6 +2,7 @@ package almazi.gitex.RecyclerView;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<CustomViewHolder> 
                 .load(item.getAvatar_url())
                 .into(holder.userImageView);
         holder.userNameTextView.setText(item.getLogin());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UserActivity.class);
+                //intent.putExtra(Config.MOVIE, movie);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
