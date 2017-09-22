@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by almazi on 9/20/17.
  */
 
-public class UserDetails implements Parcelable{
+public class UserDetails{
 
     @SerializedName("login")
     private String login;
@@ -56,38 +56,50 @@ public class UserDetails implements Parcelable{
     @SerializedName("repos")
     private int repos;
 
-    public final static Parcelable.Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
+    public UserDetails(String login, String name, String email, String company, String bio, String blog, String avatar_url, int followers, int repos) {
+        this.login = login;
+        this.name = name;
+        this.email = email;
+        this.company = company;
+        this.bio = bio;
+        this.blog = blog;
+        this.avatar_url = avatar_url;
+        this.followers = followers;
+        this.repos = repos;
+    }
+
+    /* public final static Parcelable.Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
 
 
-        @SuppressWarnings({
-                "unchecked"
-        })
-        public UserDetails createFromParcel(Parcel in) {
-            UserDetails instance = new UserDetails();
-            instance.login = ((String) in.readValue((String.class.getClassLoader())));
-            instance.name = ((String) in.readValue((String.class.getClassLoader())));
-            instance.location = ((String) in.readValue((String.class.getClassLoader())));
-            instance.id = ((int) in.readValue((String.class.getClassLoader())));
-            instance.avatar_url = ((String) in.readValue((String.class.getClassLoader())));
-            instance.gravatar_id = ((String) in.readValue((Integer.class.getClassLoader())));
-            instance.url = ((String) in.readValue((String.class.getClassLoader())));
-            instance.html_url = ((String) in.readValue((String.class.getClassLoader())));
-            instance.email = ((String) in.readValue((String.class.getClassLoader())));
-            instance.bio = ((String) in.readValue((String.class.getClassLoader())));
-            instance.blog = ((String) in.readValue((String.class.getClassLoader())));
-            instance.company = ((String) in.readValue((String.class.getClassLoader())));
-            instance.followers = ((int) in.readValue((String.class.getClassLoader())));
-            instance.following = ((int) in.readValue((String.class.getClassLoader())));
+            @SuppressWarnings({
+                    "unchecked"
+            })
+            public UserDetails createFromParcel(Parcel in) {
+                UserDetails instance = new UserDetails();
+                instance.login = ((String) in.readValue((String.class.getClassLoader())));
+                instance.name = ((String) in.readValue((String.class.getClassLoader())));
+                instance.location = ((String) in.readValue((String.class.getClassLoader())));
+                instance.id = ((int) in.readValue((String.class.getClassLoader())));
+                instance.avatar_url = ((String) in.readValue((String.class.getClassLoader())));
+                instance.gravatar_id = ((String) in.readValue((Integer.class.getClassLoader())));
+                instance.url = ((String) in.readValue((String.class.getClassLoader())));
+                instance.html_url = ((String) in.readValue((String.class.getClassLoader())));
+                instance.email = ((String) in.readValue((String.class.getClassLoader())));
+                instance.bio = ((String) in.readValue((String.class.getClassLoader())));
+                instance.blog = ((String) in.readValue((String.class.getClassLoader())));
+                instance.company = ((String) in.readValue((String.class.getClassLoader())));
+                instance.followers = ((int) in.readValue((String.class.getClassLoader())));
+                instance.following = ((int) in.readValue((String.class.getClassLoader())));
 
-            return instance;
-        }
+                return instance;
+            }
 
-        public UserDetails[] newArray(int size) {
-            return (new UserDetails[size]);
-        }
+            public UserDetails[] newArray(int size) {
+                return (new UserDetails[size]);
+            }
 
-    };
-
+        };
+    */
     public String getLogin() {
         return login;
     }
@@ -207,7 +219,7 @@ public class UserDetails implements Parcelable{
     public void setRepos(int repos) {
         this.repos = repos;
     }
-    public void writeToParcel(Parcel dest, int flags) {
+    /*public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(login);
         dest.writeValue(id);
         dest.writeValue(name);
@@ -227,5 +239,5 @@ public class UserDetails implements Parcelable{
 
     public int describeContents() {
         return 0;
-    }
+    }*/
 }

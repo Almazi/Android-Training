@@ -21,12 +21,6 @@ public class CustomViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.userNameTextView)
     TextView userNameTextView;
-    /*@BindView(R.id.fullNameTextView)
-    TextView fullNameTextView;
-    @BindView(R.id.bioTextView)
-    TextView bioTextView;
-    @BindView(R.id.companyNameTextView)
-    TextView companyNameTextView;*/
 
     public CustomViewHolder(View itemView) {
         super(itemView);

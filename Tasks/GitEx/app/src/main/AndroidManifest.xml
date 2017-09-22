@@ -26,7 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RecyclerView.SearchResultActivity" />
-        <activity android:name=".ShowGithubDetails.UserDetailsActivity" />
         <activity android:name=".RecyclerView.UserActivity"></activity>
     </application>
 
